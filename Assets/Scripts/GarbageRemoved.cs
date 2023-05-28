@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,9 +12,17 @@ public class GarbageRemoved : MonoBehaviour
     private float duration = 3f;
     private float currentScale = 0.3f;
     private float targetScale = 0f;
+    private int garbageValue = 1;
+    public TextMeshProUGUI valueText;
+    private Spawner spawner;
 
+    private void Start()
+    {
+        spawner =  FindObjectOfType<Spawner>();
+    }
     private void Update()
     {
+        
         Tilemap tilemap = FindObjectOfType<Movement>().tilemap;
         if (!gameObject.GetComponent<Collider2D>().bounds.Intersects(tilemap.localBounds))
         {
@@ -37,7 +46,15 @@ public class GarbageRemoved : MonoBehaviour
             if (currentScale <= 0.1f)
             {
                 Destroy(gameObject);
-                FindObjectOfType<Movement>().garbageRemoved++;
+                
+                
+                FindObjectOfType<Movement>().garbageRemoved += garbageValue;
+                spawner.spawnedObjects.Remove(gameObject);
+                print(garbageValue);
+                valueText.text = garbageValue.ToString();
+                var valueInstantiated = Instantiate(valueText, transform.position, Quaternion.identity, FindObjectOfType<Canvas>().transform);
+                Destroy(valueInstantiated, 2);
+
                 yield break;
             }
             yield return null;

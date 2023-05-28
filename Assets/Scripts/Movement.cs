@@ -19,6 +19,9 @@ public class Movement : MonoBehaviour
 
     public GameObject footprints;
     public GameObject tool;
+
+    [SerializeField] private ToolSO toolScriptableObject;
+
     private bool placingStep = false;
     Rigidbody2D rb;
     Camera cam;
@@ -31,10 +34,17 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
+        if (toolScriptableObject != null)
+        {
+            tool = Instantiate(toolScriptableObject.toolPrefab, transform.position, Quaternion.identity, transform);
+        }
     }
 
     void FixedUpdate()
     {
+
+        
+
         float horizontalX = Input.GetAxisRaw("Horizontal");
         float verticalY = Input.GetAxisRaw("Vertical");
         Vector2 movementVector = new Vector2(horizontalX, verticalY);
@@ -46,6 +56,7 @@ public class Movement : MonoBehaviour
         {
             movementSpeed = sprintingSpeed;
         }
+        
         else { movementSpeed = 5f; }
         if (movementVector != Vector2.zero)
         {
@@ -70,10 +81,12 @@ public class Movement : MonoBehaviour
 
         Vector3 directionToMouse = worldMousePosition - transform.position;
         directionToMouse.Normalize();
+
         angleToMouse = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
-        tool.transform.rotation = Quaternion.AngleAxis(angleToMouse - 90, Vector3.forward);//Euler(0f, 0f, angleToMouse-90);
-        print(angleToMouse);
-        print(directionToMouse);
+        if (tool != null)
+        {
+            tool.transform.rotation = Quaternion.AngleAxis(angleToMouse - 90, Vector3.forward);//Euler(0f, 0f, angleToMouse-90);
+        }
         
     }
     
