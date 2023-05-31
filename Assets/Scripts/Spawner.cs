@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Spawner : MonoBehaviour
 {
     public Tilemap tilemap = new Tilemap();
+    public Tilemap physicsTilemap;
     public GameObject[] gameObjects = null;
     public int numberToSpawn;
     
@@ -14,6 +16,8 @@ public class Spawner : MonoBehaviour
     public int waitBetweenSpawns = 2;
 
     private bool isSpawning = false;
+
+    public GameObject anchor = null;
 
 
     public List<GameObject> spawnedObjects = null;
@@ -25,7 +29,7 @@ public class Spawner : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
         objInScene = spawnedObjects.Count;
         if (!isSpawning) { StartCoroutine(SpawningRoutine()); }
@@ -39,13 +43,66 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(waitBetweenSpawns);
             for (int i = 0; i < numberToSpawn; i++)
             {
-                var trash = Instantiate(gameObjects[Random.Range(0, gameObjects.Length)], new Vector3(Random.Range(tilemap.localBounds.min.x, tilemap.localBounds.max.x), Random.Range(tilemap.localBounds.min.y, tilemap.localBounds.max.y), 0), transform.rotation);
-                spawnedObjects.Add(trash);
+                SpawnEntity();
             }
             yield return null;
         }
         isSpawning = false;
         yield return null;
 
+    }
+    private void SpawnEntity()
+    {
+        GameObject RandomObject = gameObjects[Random.Range(0, gameObjects.Length)];
+        Vector2 locationX = new Vector2(Random.Range(tilemap.localBounds.min.x, tilemap.localBounds.max.x), Random.Range(tilemap.localBounds.min.y, tilemap.localBounds.max.y));
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(locationX.x, locationX.y), Vector2.zero, 100f);
+        Debug.DrawRay(new Vector3(0, 0, 0), Vector2.zero, Color.magenta);
+
+        if (!physicsTilemap.GetComponent<CompositeCollider2D>().OverlapPoint(locationX)) {
+            
+            var trash = Instantiate(RandomObject, locationX, transform.rotation, anchor.transform);
+            spawnedObjects.Add(trash);
+        }
+        else
+        {
+            print("Hit!");
+        }
+        
+
+        
+
+        /*foreach (RaycastHit2D hit in hits) {
+
+            print(hit.collider.gameObject.name);
+            bool overlaps = physicsTilemap.OverlapPoint(hit.point);
+            if (overlaps) {
+                print("Does Work");
+                print(hit.collider.gameObject.name);
+            }
+
+            /*if (hit.collider.composite != null)
+            {
+                if (hit.collider.composite.gameObject.name == "PhysicalObjects")
+                {
+                    print(hit.collider.gameObject.name);
+                    print("Collision finally!");
+                }
+                
+                
+                
+            }
+            else
+            {
+                print(hit.collider.name);
+                print("null");
+            }
+            
+        
+        }*/
+
+        
+        
+        
     }
 }

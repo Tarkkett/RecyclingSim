@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Tilemaps;
@@ -18,9 +20,8 @@ public class Movement : MonoBehaviour
     private float changeStartTime;
 
     public GameObject footprints;
-    public GameObject tool;
+    private GameObject tool = null;
 
-    [SerializeField] private ToolSO toolScriptableObject;
 
     private bool placingStep = false;
     Rigidbody2D rb;
@@ -34,10 +35,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
-        if (toolScriptableObject != null)
-        {
-            tool = Instantiate(toolScriptableObject.toolPrefab, transform.position, Quaternion.identity, transform);
-        }
+        
     }
 
     void FixedUpdate()
@@ -85,7 +83,7 @@ public class Movement : MonoBehaviour
         angleToMouse = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
         if (tool != null)
         {
-            tool.transform.rotation = Quaternion.AngleAxis(angleToMouse - 90, Vector3.forward);//Euler(0f, 0f, angleToMouse-90);
+            tool.transform.rotation = Quaternion.AngleAxis(angleToMouse - 90, Vector3.forward);
         }
         
     }
@@ -117,6 +115,22 @@ public class Movement : MonoBehaviour
         placingStep = false;
         yield break;
 
+    }
+
+    public void ChangeTool(ToolClass toolClass)
+    {
+        if(tool != null) {
+
+            //tool.transform.SetParent(null);
+            Destroy(tool);
+            print(tool.name);
+            print("YEs");
+            
+        }
+        
+        tool = toolClass.toolPrefab;
+        tool = Instantiate(tool, transform.position, Quaternion.identity, transform);
+        
     }
     
 }
