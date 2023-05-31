@@ -9,4 +9,6 @@ public class ToolClass
     public GameObject toolPrefab;
     public Sprite toolSprite;
     public string toolName;
+    public bool isRepulsive;
+    public int repulsionStrength;
 }

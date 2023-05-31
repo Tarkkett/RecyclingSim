@@ -66,7 +66,7 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            print("Hit!");
+
         }
         
 

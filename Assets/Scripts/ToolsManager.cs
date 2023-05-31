@@ -21,7 +21,6 @@ public class ToolsManager : MonoBehaviour
 
         for (int i = 0; i < allButtons.Length; i++)
         {
-            print(allButtons.Length.ToString());
             int buttonIndex = i;
             allButtons[i].onClick.AddListener(() => OnButtonClicked(buttonIndex));
             if (allButtons[i].gameObject.name == "Menu") {

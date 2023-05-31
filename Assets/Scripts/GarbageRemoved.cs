@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -61,10 +63,8 @@ public class GarbageRemoved : MonoBehaviour
                 
                 FindObjectOfType<Movement>().garbageRemoved += garbageValue;
                 spawner.spawnedObjects.Remove(gameObject);
-                print(garbageValue);
-                valueText.text = garbageValue.ToString();
-                var valueInstantiated = Instantiate(valueText, transform.position, Quaternion.identity, gameCanvas.transform);
-                Destroy(valueInstantiated, 2);
+                UpdateText();
+                
 
                 yield break;
             }
@@ -75,4 +75,12 @@ public class GarbageRemoved : MonoBehaviour
         yield return null;
     }
 
+    private void UpdateText()
+    {
+        valueText.text = garbageValue.ToString();
+        valueText.color = new Color(0f, UnityEngine.Random.Range(0.2f, 1f), 0);
+        Vector2 randomizedPosition = new Vector2(transform.position.x + UnityEngine.Random.Range(-1f, 1f), transform.position.y + UnityEngine.Random.Range(-1f, 1f));
+        var valueInstantiated = Instantiate(valueText, randomizedPosition, Quaternion.identity, gameCanvas.transform);
+        Destroy(valueInstantiated.gameObject, 2);
+    }
 }

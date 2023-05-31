@@ -5,8 +5,10 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Tilemaps;
+using Unity.Netcode;
+using System;
 
-public class Movement : MonoBehaviour
+public class Movement : NetworkBehaviour
 {
     //global variables
     public Tilemap tilemap = new Tilemap();
@@ -21,7 +23,8 @@ public class Movement : MonoBehaviour
 
     public GameObject footprints;
     private GameObject tool = null;
-
+    
+    private ToolClass toolClassIN;
 
     private bool placingStep = false;
     Rigidbody2D rb;
@@ -40,40 +43,13 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        WASDMovement();
+        PlayerOutsideMap();
+        ControlTools();
+    }
 
-        
-
-        float horizontalX = Input.GetAxisRaw("Horizontal");
-        float verticalY = Input.GetAxisRaw("Vertical");
-        Vector2 movementVector = new Vector2(horizontalX, verticalY);
-
-        cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, transform.position.x, 4f * Time.deltaTime), Mathf.Lerp(cam.transform.position.y, transform.position.y, 2f * Time.deltaTime), -10);
-        rb.velocity = movementVector.normalized * movementSpeed;
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            movementSpeed = sprintingSpeed;
-        }
-        
-        else { movementSpeed = 5f; }
-        if (movementVector != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
-
-            if (!placingStep) StartCoroutine(FootprintRoutine(angle));
-        }
-
-        
-        if (!gameObject.GetComponent<Collider2D>().bounds.Intersects(tilemap.localBounds))
-        {
-            var directionToCenter = new Vector3(0, 0, 0) - transform.position;
-            directionToCenter.Normalize();
-            StartCoroutine(ChangeForce(directionToCenter));
-            print(directionToCenter);
-           
-            
-        }
-
+    private void ControlTools()
+    {
         var worldMousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
 
 
@@ -84,11 +60,55 @@ public class Movement : MonoBehaviour
         if (tool != null)
         {
             tool.transform.rotation = Quaternion.AngleAxis(angleToMouse - 90, Vector3.forward);
+
+            if (toolClassIN.isRepulsive)
+            {
+                PointEffector2D forceField = tool.GetComponent<PointEffector2D>();
+                forceField.forceMagnitude = toolClassIN.repulsionStrength;
+                var point = forceField.forceSource;
+                print(point);
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    forceField.enabled = false;
+                    print("ForceField is down!");
+                }
+                else
+                {
+                    forceField.enabled = true;
+                }
+            }
         }
-        
     }
-    
-    
+
+    private void PlayerOutsideMap()
+    {
+        if (!gameObject.GetComponent<Collider2D>().bounds.Intersects(tilemap.localBounds))
+        {
+            var directionToCenter = new Vector3(0, 0, 0) - transform.position;
+            directionToCenter.Normalize();
+            StartCoroutine(ChangeForce(directionToCenter));
+        }
+    }
+
+    private void WASDMovement()
+    {
+        float horizontalX = Input.GetAxisRaw("Horizontal");
+        float verticalY = Input.GetAxisRaw("Vertical");
+        Vector2 movementVector = new Vector2(horizontalX, verticalY);
+
+        cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, transform.position.x, 4f * Time.deltaTime), Mathf.Lerp(cam.transform.position.y, transform.position.y, 2f * Time.deltaTime), -10);
+        rb.velocity = movementVector.normalized * movementSpeed;
+
+        movementSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintingSpeed : 5f;
+
+        if (movementVector != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
+
+            if (!placingStep) StartCoroutine(FootprintRoutine(angle));
+        }
+    }
+
     IEnumerator ChangeForce(Vector3 directionToCenter)
     {
         
@@ -123,11 +143,10 @@ public class Movement : MonoBehaviour
 
             //tool.transform.SetParent(null);
             Destroy(tool);
-            print(tool.name);
-            print("YEs");
+            
             
         }
-        
+        toolClassIN = toolClass;
         tool = toolClass.toolPrefab;
         tool = Instantiate(tool, transform.position, Quaternion.identity, transform);
         
