@@ -11,4 +11,7 @@ public class ToolClass
     public string toolName;
     public bool isRepulsive;
     public int repulsionStrength;
+    public int maxEnergy;
+    public float timeBetweenEnergyUseages;
+    public int powerUsage;
 }

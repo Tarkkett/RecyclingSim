@@ -6,8 +6,10 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     private int score;
+    private int energy;
     public Movement movement;
     public TextMeshProUGUI garbageRemovedText;
+    public TextMeshProUGUI energyText;
 
     private void Start()
     {
@@ -28,6 +30,8 @@ public class UIManager : MonoBehaviour
         else if (score < 1000000) { garbageRemovedText.text = "" + score.ToString(); }
         else if (score < 10000000) { garbageRemovedText.text = (score/1000000).ToString() +"M"; }
         score = movement.garbageRemoved;
+        energy = movement.energyStored;
+        energyText.text = energy.ToString() + "%";
         
     }
 }

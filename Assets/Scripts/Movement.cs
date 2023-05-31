@@ -5,34 +5,41 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Tilemaps;
-using Unity.Netcode;
 using System;
 
-public class Movement : NetworkBehaviour
+public class Movement : MonoBehaviour
 {
-    //global variables
+    [Header("Tilemap")]
     public Tilemap tilemap = new Tilemap();
 
+    [Header("Movement")]
     public float movementSpeed = 5;
     public float sprintingSpeed = 5;
+    Rigidbody2D rb;
+    Camera cam;
 
+    [Header("PushBack")]
     private float targetForce = -100;
     private float currentForce = 0f;
     private float changeForceDuration = 3f;
     private float changeStartTime;
 
+    [Header("Footprints")]
     public GameObject footprints;
-    private GameObject tool = null;
-    
-    private ToolClass toolClassIN;
-
     private bool placingStep = false;
-    Rigidbody2D rb;
-    Camera cam;
 
+    [Header("Tools")]
+    private GameObject tool = null;
+    private ToolClass toolClassIN;
     private float angleToMouse;
 
+    [Header("Garbage Management")]
     public int garbageRemoved;
+
+    [Header("Energy Management")]
+    public int energyStored;
+    public bool isDrainingEnergy = false;
+    public bool isRestoringEnergy = false;
 
     void Start()
     {
@@ -46,6 +53,8 @@ public class Movement : NetworkBehaviour
         WASDMovement();
         PlayerOutsideMap();
         ControlTools();
+
+
     }
 
     private void ControlTools()
@@ -63,21 +72,52 @@ public class Movement : NetworkBehaviour
 
             if (toolClassIN.isRepulsive)
             {
-                PointEffector2D forceField = tool.GetComponent<PointEffector2D>();
-                forceField.forceMagnitude = toolClassIN.repulsionStrength;
-                var point = forceField.forceSource;
-                print(point);
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    forceField.enabled = false;
-                    print("ForceField is down!");
-                }
-                else
-                {
-                    forceField.enabled = true;
-                }
+                
+                RepulsiveTool();
             }
         }
+    }
+
+    private void RepulsiveTool()
+    {
+        PointEffector2D forceField = tool.GetComponent<PointEffector2D>();
+        forceField.forceMagnitude = toolClassIN.repulsionStrength;
+        var point = forceField.forceSource;
+        print(point);
+        if (Input.GetKey(KeyCode.Space) && energyStored > toolClassIN.powerUsage)
+        {
+            if (!isDrainingEnergy) { StartCoroutine(DrainEnergy()); }
+            forceField.enabled = true;
+
+        }
+        else
+        {
+            forceField.enabled = false;
+        }
+
+        if (!isDrainingEnergy && toolClassIN != null)
+        {
+            if (!isRestoringEnergy) { StartCoroutine(RestoreEnergy()); }
+            
+        }
+    }
+
+    IEnumerator RestoreEnergy()
+    {
+        isRestoringEnergy = true;
+        yield return new WaitForSeconds(2f);
+        if (energyStored < toolClassIN.maxEnergy) { energyStored += 10; }
+        if (energyStored > toolClassIN.maxEnergy) { energyStored = toolClassIN.maxEnergy; }
+        isRestoringEnergy = false;
+    }
+
+    IEnumerator DrainEnergy()
+    {
+        isDrainingEnergy = true;
+        yield return new WaitForSeconds(toolClassIN.timeBetweenEnergyUseages);
+        energyStored -= toolClassIN.powerUsage;
+        if (energyStored < 0) { energyStored = 0; }
+        isDrainingEnergy = false;
     }
 
     private void PlayerOutsideMap()
