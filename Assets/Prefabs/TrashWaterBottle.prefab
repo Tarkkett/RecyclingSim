@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1601887162994655624}
   - component: {fileID: 1601887162994655735}
-  - component: {fileID: 1601887162994655625}
   - component: {fileID: 1601887162994655626}
   - component: {fileID: -2847153605133852555}
-  m_Layer: 0
+  - component: {fileID: 5576468035829343524}
+  m_Layer: 6
   m_Name: TrashWaterBottle
   m_TagString: Trash
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 4c437c03825b6c441971da19b7bf454b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1601887162994655625
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601887162994655734}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 743f549960ff7f548b2f606fc0c82a4e, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.49999997
 --- !u!50 &1601887162994655626
 Rigidbody2D:
   serializedVersion: 4
@@ -137,3 +121,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueText: {fileID: 3561563251245634580, guid: ede8b671b0c111645abb3e99ddac1e25, type: 3}
+--- !u!70 &5576468035829343524
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601887162994655734}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0016825199, y: -0.016824782}
+  m_Size: {x: 0.44814706, y: 0.8586718}
+  m_Direction: 0

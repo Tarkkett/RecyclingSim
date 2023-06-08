@@ -20,6 +20,7 @@ MonoBehaviour:
     repulsionStrength: 0
     maxEnergy: 0
     timeBetweenEnergyUseages: 0
+    powerUsage: 0
   - toolPrefab: {fileID: 5436623589939220835, guid: 74e9a1429d27f214ea1a91ad51d761c1, type: 3}
     toolSprite: {fileID: 21300000, guid: 0d3cbbdfc5fb59249aa5a565f28faf57, type: 3}
     toolName: Pusher MK2
@@ -27,6 +28,7 @@ MonoBehaviour:
     repulsionStrength: 0
     maxEnergy: 0
     timeBetweenEnergyUseages: 0
+    powerUsage: 0
   - toolPrefab: {fileID: 7186453593826828223, guid: da85155e6e4ad534ab9d19dd2e2c477b, type: 3}
     toolSprite: {fileID: 21300000, guid: d257f1e1f77b22646970beedcc918c68, type: 3}
     toolName: Pusher MK3
@@ -34,6 +36,7 @@ MonoBehaviour:
     repulsionStrength: 0
     maxEnergy: 0
     timeBetweenEnergyUseages: 0
+    powerUsage: 0
   - toolPrefab: {fileID: 8271220614132589934, guid: 5a24fc2604728f64bad2549e51e20a85, type: 3}
     toolSprite: {fileID: 21300000, guid: fee31a4bcc9ba7a42a4737389d5b642b, type: 3}
     toolName: Forcer MK1
@@ -41,3 +44,4 @@ MonoBehaviour:
     repulsionStrength: 5000
     maxEnergy: 1000
     timeBetweenEnergyUseages: 0.1
+    powerUsage: 100

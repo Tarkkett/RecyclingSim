@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -15,7 +14,7 @@ public class GarbageRemoved : MonoBehaviour
     private float duration = 3f;
     private float currentScale = 0.3f;
     private float targetScale = 0f;
-    private int garbageValue = 10000;
+    [SerializeField]private int garbageValue = 100;
     public TextMeshProUGUI valueText;
     private Spawner spawner;
     Canvas[] allWorldCanvases;
@@ -62,7 +61,8 @@ public class GarbageRemoved : MonoBehaviour
                 
                 
                 FindObjectOfType<Movement>().garbageRemoved += garbageValue;
-                spawner.spawnedObjects.Remove(gameObject);
+                
+                spawner.spawnedObjects.Remove(GetClassFromPrefab(gameObject));
                 UpdateText();
                 
 
@@ -73,6 +73,22 @@ public class GarbageRemoved : MonoBehaviour
         currentScale = 0f;
         coroutineRunning = false;
         yield return null;
+    }
+
+    public GarbageClass GetClassFromPrefab(GameObject obj)
+    {
+        GarbageClass gClass = null;
+        for (int i = 0; i < spawner.spawnedObjects.Count; i++)
+        {
+            if (spawner.spawnedObjects[i].prefab == obj)
+            {
+                print(spawner.spawnedObjects[i].prefab);
+                print(obj);
+                gClass = spawner.spawnedObjects[i];
+                return gClass;
+            }
+        }
+        return null;
     }
 
     private void UpdateText()

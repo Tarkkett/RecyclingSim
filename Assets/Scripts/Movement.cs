@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Tilemaps;
@@ -15,13 +14,14 @@ public class Movement : MonoBehaviour
     [Header("Movement")]
     public float movementSpeed = 5;
     public float sprintingSpeed = 5;
+    public bool isCamFollow = true;
     Rigidbody2D rb;
     Camera cam;
 
     [Header("PushBack")]
-    private float targetForce = -100;
+    public float targetForce = -300;
     private float currentForce = 0f;
-    private float changeForceDuration = 3f;
+    private float changeForceDuration = 2f;
     private float changeStartTime;
 
     [Header("Footprints")]
@@ -105,7 +105,7 @@ public class Movement : MonoBehaviour
     IEnumerator RestoreEnergy()
     {
         isRestoringEnergy = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         if (energyStored < toolClassIN.maxEnergy) { energyStored += 10; }
         if (energyStored > toolClassIN.maxEnergy) { energyStored = toolClassIN.maxEnergy; }
         isRestoringEnergy = false;
@@ -136,7 +136,7 @@ public class Movement : MonoBehaviour
         float verticalY = Input.GetAxisRaw("Vertical");
         Vector2 movementVector = new Vector2(horizontalX, verticalY);
 
-        cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, transform.position.x, 4f * Time.deltaTime), Mathf.Lerp(cam.transform.position.y, transform.position.y, 2f * Time.deltaTime), -10);
+        if(isCamFollow) cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, transform.position.x, 4f * Time.deltaTime), Mathf.Lerp(cam.transform.position.y, transform.position.y, 2f * Time.deltaTime), -10);
         rb.velocity = movementVector.normalized * movementSpeed;
 
         movementSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintingSpeed : 5f;

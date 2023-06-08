@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 948419422786296781}
   - component: {fileID: 9069021604664192151}
-  - component: {fileID: 4613463769700611940}
+  - component: {fileID: 971276879475222816}
   m_Layer: 0
   m_Name: Footprints
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4613463769700611940
+--- !u!114 &971276879475222816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

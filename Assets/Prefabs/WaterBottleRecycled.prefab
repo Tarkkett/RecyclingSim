@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 781549589787305844}
   - component: {fileID: 7332736618379612345}
-  - component: {fileID: 6082970977992045662}
   - component: {fileID: 6876740233884615746}
   - component: {fileID: 7628060953001247588}
-  m_Layer: 0
+  - component: {fileID: 1175809723782911381}
+  m_Layer: 6
   m_Name: WaterBottleRecycled
   m_TagString: Recycled
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 189f27ee51700e84ea75d25ea1b646b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6082970977992045662
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147427891235072290}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 743f549960ff7f548b2f606fc0c82a4e, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.49999997
 --- !u!50 &6876740233884615746
 Rigidbody2D:
   serializedVersion: 4
@@ -137,3 +121,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueText: {fileID: 3561563251245634580, guid: ede8b671b0c111645abb3e99ddac1e25, type: 3}
+--- !u!70 &1175809723782911381
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147427891235072290}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0033266544, y: -0.04102993}
+  m_Size: {x: 0.44775915, y: 0.91794014}
+  m_Direction: 0
