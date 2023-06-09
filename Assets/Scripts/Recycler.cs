@@ -10,47 +10,51 @@ public class Recycler : MonoBehaviour
     public Movement movement;
     public Spawner spawner;
     public Transform prefabAnchor;
+    
 
     private void Start()
     {
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GarbageRemoved garbageRemoved = collision.gameObject.GetComponent<GarbageRemoved>();
         if (collision != null && collision.tag == "Trash")
         {
             for (int i = 0; i < spawner.spawnedObjects.Count; i++)
             {
                 print(collision.gameObject.name);
-                if (spawner.spawnedObjects[i].prefab == collision.gameObject)
+                if (spawner.spawnedObjects[i].name == collision.gameObject.name)
                 {
                     print(i);
                     Destroy(collision.gameObject);
                     switch (spawner.spawnedObjects[i].type)
                     {
                         case myType.Bottle:
-                            InstantiateObjectByType(myType.Bottle);
+                            InstantiateObjectByType(myType.Bottle, garbageRemoved);
                             break;
                         case myType.Jar:
-                            InstantiateObjectByType(myType.Jar);
+                            InstantiateObjectByType(myType.Jar, garbageRemoved);
                             break;
                         default:
                             break;
                     }
+                    spawner.spawnedObjects.Remove(garbageRemoved.GetClassFromPrefab(collision.gameObject));
+                    break;
                 }
             }
         }
     }
 
-    private void InstantiateObjectByType(myType type)
+    private void InstantiateObjectByType(myType type, GarbageRemoved garbageRemoved)
     {
-        
-        /*for (int i = 0; i < garbageDB.garbageCount; i++)
+        for (int i = 0; i < garbageDB.garbageCount; i++)
         {
             if (garbageDB.GetTrash(i).type == type && garbageDB.GetTrash(i).state == myState.Recycled)
             {
-                Instantiate(garbageDB.GetTrash(i).prefab, outputPoint, prefabAnchor);
+                spawner.spawnedObjects.Add(garbageDB.GetTrash(i));
+                Instantiate(garbageDB.GetTrash(i).prefab, outputPoint.transform.position, Quaternion.identity, outputPoint.transform);
             }
-        }*/
+        }
     }
 
     /*public GarbageClass GetClassFromPrefab(GameObject obj)

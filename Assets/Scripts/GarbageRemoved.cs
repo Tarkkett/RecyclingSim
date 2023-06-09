@@ -80,10 +80,8 @@ public class GarbageRemoved : MonoBehaviour
         GarbageClass gClass = null;
         for (int i = 0; i < spawner.spawnedObjects.Count; i++)
         {
-            if (spawner.spawnedObjects[i].prefab == obj)
+            if (spawner.spawnedObjects[i].name == obj.name)
             {
-                print(spawner.spawnedObjects[i].prefab);
-                print(obj);
                 gClass = spawner.spawnedObjects[i];
                 return gClass;
             }

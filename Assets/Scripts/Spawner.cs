@@ -61,10 +61,10 @@ public class Spawner : MonoBehaviour
 
         if (!physicsTilemap.GetComponent<CompositeCollider2D>().OverlapPoint(locationX)) {
             
-           var spawnedObject = Instantiate(randomObject.prefab, locationX, transform.rotation, anchor.transform);
+            var spawnedObject = Instantiate(randomObject.prefab, locationX, transform.rotation, anchor.transform);
+            spawnedObject.name = randomObject.name;
             spawnedObjects.Add(randomObject);
-            cloneList.Add(spawnedObject);
-
+            
         }
         
     }
