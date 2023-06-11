@@ -10,7 +10,7 @@ public class Pollution : MonoBehaviour
 {
     public MyQuality PollutionLevel;
 
-
+    public static Pollution instance;
 
     public GameObject player;
     public Spawner spawner;
@@ -22,56 +22,94 @@ public class Pollution : MonoBehaviour
     public float t;
     public bool isAlive = true;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI startGameText;
+    public float timeElapsed;
+    
 
     public float startTime = 80;
 
+
+
     private void Awake()
     {
+
+        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
+        
+        
+        gameOverText.enabled = false;
+        startGameText.enabled = true;
+    }
+
+    private void StartGame()
+    {
+        print("Start!");
         Cursor.lockState = CursorLockMode.None;
         isAlive = true;
-        gameOverText.enabled = false;
+        startGameText.enabled = false;
+        AudioManager.instance.musicSource.mute = false;
     }
+
     private void Update()
     {
-        if (spawner.spawnedObjects.Count != 0)
+        if (!isAlive && Input.GetKeyDown(KeyCode.Space))
         {
-            
-            float percent = ((float)spawner.spawnedObjects.Count / (float)spawner.maxObjects) * 100f;
-            /*print("Max: " + spawner.maxObjects);
-            print(spawner.spawnedObjects.Count);
-            print(percent + "%");
-            if (!isCounting) { StartCoroutine(changeValueToTarget(targetTemperature)); }*/
-            targetTemperature = ((percent * maxTemperature) / 100f);
-            float distance = targetTemperature - currentTemperature;
-            if (distance < 0) { distance *= -1; }
-            print("Dist: " + distance);
-            t += Time.deltaTime / distance;
-            tempTemperature = Mathf.Lerp(currentTemperature, targetTemperature, t);
-            
-            
-            /*print(tempTemperature);
-            print("Cur: "+ currentTemperature);
-            print("Target: "+ targetTemperature);*/
-            if(tempTemperature == targetTemperature)
-            {
-                currentTemperature = targetTemperature;
-                t = 0;
-            }
-            if (tempTemperature >= maxTemperature) {
-                tempTemperature = maxTemperature;
-
-                if (isAlive) { gameOver(); }
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                    isAlive = true;
-                }
-            }
-
-
+            StartGame();
         }
+        if (isAlive)
+        {
+            timeElapsed += Time.deltaTime;
 
-        SetAirQuality();
+            if (spawner.spawnedObjects.Count != 0)
+            {
+
+                float percent = ((float)spawner.spawnedObjects.Count / (float)spawner.maxObjects) * 100f;
+                /*print("Max: " + spawner.maxObjects);
+                print(spawner.spawnedObjects.Count);
+                print(percent + "%");
+                if (!isCounting) { StartCoroutine(changeValueToTarget(targetTemperature)); }*/
+                targetTemperature = ((percent * maxTemperature) / 100f);
+                float distance = targetTemperature - currentTemperature;
+                if (distance < 0) { distance *= -1; }
+                print("Dist: " + distance);
+                t += Time.deltaTime / distance;
+                tempTemperature = Mathf.Lerp(currentTemperature, targetTemperature, t);
+
+
+                /*print(tempTemperature);
+                print("Cur: "+ currentTemperature);
+                print("Target: "+ targetTemperature);*/
+                if (tempTemperature == targetTemperature)
+                {
+                    currentTemperature = targetTemperature;
+                    t = 0;
+                }
+                if (tempTemperature >= maxTemperature)
+                {
+                    tempTemperature = maxTemperature;
+
+                    if (isAlive) { gameOver(); }
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        isAlive = true;
+                    }
+                }
+
+
+            }
+
+            SetAirQuality();
+        }
+        
 
     }
 

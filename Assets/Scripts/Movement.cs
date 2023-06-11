@@ -54,9 +54,12 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        WASDMovement();
-        PlayerOutsideMap();
-        ControlTools();
+        if (Pollution.instance.isAlive) {
+            WASDMovement();
+            PlayerOutsideMap();
+            ControlTools();
+        }
+        
 
         vfxRenderer.SetVector3("transformPos", transform.position);
     }

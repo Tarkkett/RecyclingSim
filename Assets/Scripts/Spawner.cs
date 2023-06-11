@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isSpawning) { StartCoroutine(SpawningRoutine()); }
+        if (!isSpawning && Pollution.instance.isAlive) { StartCoroutine(SpawningRoutine()); }
         
     }
     private IEnumerator SpawningRoutine()

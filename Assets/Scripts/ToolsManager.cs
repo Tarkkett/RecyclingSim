@@ -56,7 +56,7 @@ public class ToolsManager : MonoBehaviour
                     int extractedNumber;
                     if (int.TryParse(numberString, out extractedNumber))
                     {
-                        if (movement.garbageRemoved > extractedNumber) { button.interactable = true;} else { button.interactable = false; }
+                        if (movement.garbageRemoved >= extractedNumber) { button.interactable = true;} else { button.interactable = false; }
                     }
                 }
             }

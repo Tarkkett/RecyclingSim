@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     private int score;
     private int energy;
     private int intedPollution;
+    private int intedTime;
 
     public float maxCloudRate = 50;
     public Movement movement;
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI garbageRemovedText;
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI pollutionText;
+    public TextMeshProUGUI timerText;
     public VisualEffect fogEffect;
 
     private void Start()
@@ -25,6 +27,8 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
+        intedTime = (int)pollutionClass.timeElapsed;
+        timerText.text = intedTime.ToString() + " Sec";
         if (score < 10)
         {
             garbageRemovedText.text = "0000" + score.ToString();
