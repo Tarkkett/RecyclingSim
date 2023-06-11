@@ -17,9 +17,11 @@ public class Recycler : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        AudioManager.instance.PlaySFX("PullSound");
         GarbageRemoved garbageRemoved = collision.gameObject.GetComponent<GarbageRemoved>();
         if (collision != null && collision.tag == "Trash")
         {
+            AudioManager.instance.PlaySFX("ConvertSound");
             for (int i = 0; i < spawner.spawnedObjects.Count; i++)
             {
                 print(collision.gameObject.name);
@@ -29,11 +31,14 @@ public class Recycler : MonoBehaviour
                     Destroy(collision.gameObject);
                     switch (spawner.spawnedObjects[i].type)
                     {
-                        case myType.Bottle:
-                            InstantiateObjectByType(myType.Bottle, garbageRemoved);
+                        case myType.Bottle_Water:
+                            InstantiateObjectByType(myType.Bottle_Water, garbageRemoved);
                             break;
                         case myType.Jar:
                             InstantiateObjectByType(myType.Jar, garbageRemoved);
+                            break;
+                        case myType.Bottle_Wine:
+                            InstantiateObjectByType(myType.Bottle_Wine, garbageRemoved);
                             break;
                         default:
                             break;
@@ -49,10 +54,11 @@ public class Recycler : MonoBehaviour
     {
         for (int i = 0; i < garbageDB.garbageCount; i++)
         {
-            if (garbageDB.GetTrash(i).type == type && garbageDB.GetTrash(i).state == myState.Recycled)
+            if (garbageDB.GetAllObjects(i).type == type && garbageDB.GetAllObjects(i).state == myState.Recycled)
             {
-                spawner.spawnedObjects.Add(garbageDB.GetTrash(i));
-                Instantiate(garbageDB.GetTrash(i).prefab, outputPoint.transform.position, Quaternion.identity, outputPoint.transform);
+                spawner.spawnedObjects.Add(garbageDB.GetAllObjects(i));
+                var instance = Instantiate(garbageDB.GetAllObjects(i).prefab, outputPoint.transform.position, Quaternion.identity, outputPoint.transform);
+                instance.gameObject.name = garbageDB.GetAllObjects(i).name;
             }
         }
     }

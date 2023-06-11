@@ -14,7 +14,7 @@ public class GarbageRemoved : MonoBehaviour
     private float duration = 3f;
     private float currentScale = 0.3f;
     private float targetScale = 0f;
-    [SerializeField]private int garbageValue = 100;
+    [SerializeField]private int garbageValue = 0;
     public TextMeshProUGUI valueText;
     private Spawner spawner;
     Canvas[] allWorldCanvases;
@@ -22,6 +22,7 @@ public class GarbageRemoved : MonoBehaviour
 
     private void Start()
     {
+        garbageValue = 0;
         spawner =  FindObjectOfType<Spawner>();
         allWorldCanvases = FindObjectsOfType<Canvas>();
         for (int i = 0; i < allWorldCanvases.Length; i++)
@@ -45,9 +46,30 @@ public class GarbageRemoved : MonoBehaviour
     }
     private IEnumerator GarbageOutideBounds()
     {
+        AudioManager.instance.PlaySFX("FallSound");
         coroutineRunning = true;
         startTime = Time.time;
-        
+        for (int i = 0; i < spawner.spawnedObjects.Count; i++)
+        {
+            if (spawner.spawnedObjects[i].name == gameObject.name)
+            {
+                switch (spawner.spawnedObjects[i].state)
+                {
+                    case myState.Trash:
+                        garbageValue += spawner.spawnedObjects[i].value;
+                        spawner.SpawnEntity(2, myState.Trash);
+                        
+                        break;
+                    case myState.Recycled:
+                        garbageValue += spawner.spawnedObjects[i].value;
+                        break;
+                    default:
+                        break;
+                }
+                
+                break;
+            }
+        }
 
         while (currentScale > targetScale) {
             var currentTime = (Time.time - startTime) / duration;
@@ -94,7 +116,7 @@ public class GarbageRemoved : MonoBehaviour
         valueText.text = garbageValue.ToString();
         valueText.color = new Color(0f, UnityEngine.Random.Range(0.2f, 1f), 0);
         Vector2 randomizedPosition = new Vector2(transform.position.x + UnityEngine.Random.Range(-1f, 1f), transform.position.y + UnityEngine.Random.Range(-1f, 1f));
-        var valueInstantiated = Instantiate(valueText, randomizedPosition, Quaternion.identity, gameCanvas.transform);
+        var valueInstantiated = Instantiate(valueText.gameObject, randomizedPosition, Quaternion.identity, gameCanvas.transform);
         Destroy(valueInstantiated.gameObject, 2);
     }
 }

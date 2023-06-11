@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Tilemaps;
+using UnityEngine.VFX;
 using System;
 
 public class Movement : MonoBehaviour
@@ -41,6 +42,9 @@ public class Movement : MonoBehaviour
     public bool isDrainingEnergy = false;
     public bool isRestoringEnergy = false;
 
+    [Header("Visual Effects")]
+    public VisualEffect vfxRenderer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,7 +58,7 @@ public class Movement : MonoBehaviour
         PlayerOutsideMap();
         ControlTools();
 
-
+        vfxRenderer.SetVector3("transformPos", transform.position);
     }
 
     private void ControlTools()

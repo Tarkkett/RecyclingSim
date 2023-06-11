@@ -39,6 +39,7 @@ public class ToolsManager : MonoBehaviour
 
     private void OnMenuClicked()
     {
+        AudioManager.instance.PlaySFX("ButtonClick");
         if (menuPanel.activeSelf == false) { menuPanel.SetActive(true); }
         else { menuPanel.SetActive(false); }
 
@@ -65,7 +66,7 @@ public class ToolsManager : MonoBehaviour
     private void OnButtonClicked(int buttonIndex)
     {
 
-
+        AudioManager.instance.PlaySFX("ButtonClick");
         ToolClass individualTool = toolDatabase.GetTool(buttonIndex);
         movement.ChangeTool(individualTool);
         TextMeshProUGUI[] indicators = allButtons[buttonIndex].GetComponentsInChildren<TextMeshProUGUI>();

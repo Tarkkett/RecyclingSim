@@ -12,20 +12,545 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0165a083d81e7e143aad9623031d242f, type: 3}
   m_Name: GarbageDatabase
   m_EditorClassIdentifier: 
-  garbageClass:
+  trashList:
   - name: TrashBotlle
     prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
     type: 0
     state: 0
-  - name: RecycledBotlle
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: TrashBotlle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: Trash_WaterBottle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: Trash_WaterBottle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: Trash_WaterBottle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  garbageClass:
+  - name: Trash_WaterBottle
+    prefab: {fileID: 1601887162994655734, guid: 6640465611d76be4c8c9f7b306b013fb, type: 3}
+    value: 20
+    type: 0
+    state: 0
+  - name: Recycled_WaterBottle
     prefab: {fileID: 1147427891235072290, guid: 09a02f1f29c115745b2514d487757f44, type: 3}
+    value: 100
     type: 0
     state: 1
-  - name: TrashJar
+  - name: Trash_JamJar
     prefab: {fileID: 7257289273349740242, guid: 449afe0a4a5feac4bb8ba957b25c7ed0, type: 3}
+    value: 20
     type: 1
     state: 0
-  - name: RecycledJar
+  - name: Recycled_JamJar
     prefab: {fileID: 5881500132408039956, guid: 30609bb807635ac4bb0f7f03c493a91b, type: 3}
+    value: 100
     type: 1
     state: 1
+  - name: Recycled_WineBottle
+    prefab: {fileID: 1580679339671153627, guid: cccbde4dacca3554395fc38aca1bd62e, type: 3}
+    value: 100
+    type: 2
+    state: 1
+  - name: Trash_WineBottle
+    prefab: {fileID: 2234664563678095437, guid: bd9d7a80ddb39534aaa42650af58d48f, type: 3}
+    value: 20
+    type: 2
+    state: 0

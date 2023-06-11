@@ -9,16 +9,19 @@ public class GarbageClass
 {
     public string name;
     public GameObject prefab;
+    public int value;
     public myType type;
     public myState state;
 }
 public enum myType
 {
-    Bottle,
-    Jar
+    Bottle_Water,
+    Jar,
+    Bottle_Wine
 }
 public enum myState
 {
     Trash,
-    Recycled
+    Recycled,
+    Both
 }
